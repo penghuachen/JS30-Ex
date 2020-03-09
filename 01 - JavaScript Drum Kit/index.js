@@ -29,22 +29,18 @@ function keyboardElementsGenerator() {
 };
 
 function addKeydownEvent() {
-  document
-    .querySelector('body')
+  window
     .addEventListener('keydown', highlightElements);
 
-  document
-    .querySelector('body')    
+  window  
     .addEventListener('keydown', playElementsAudio);
 }
 
 function addKeyupEvent() {
-  document
-    .querySelector('body')
+  window
     .addEventListener('keyup', highlightElements);
 
-  document
-    .querySelector('body')  
+  window  
     .addEventListener('keyup', playElementsAudio);
 }
 
