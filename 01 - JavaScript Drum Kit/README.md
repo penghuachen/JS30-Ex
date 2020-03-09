@@ -1,7 +1,5 @@
 #  JavaScript Drum Kit 
 
-## 自己的寫法
-
 ### 此題重點
 
 1. 透過 keyboard 事件將 dom 新增一個 `playing` 的 class name。
