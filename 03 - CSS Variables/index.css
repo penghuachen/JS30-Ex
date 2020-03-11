@@ -1,8 +1,8 @@
 /* defined css variables */
 :root {
   --color: #ffc600;
-  --spacing: 10px;
-  --blur: 0px;
+  --space: 10px;
+  --blur: 1px;
 }
 
 
@@ -17,7 +17,7 @@ body {
 
 img {
   /* use css variables */
-  padding: var(--spacing);
+  padding: var(--space);
   background: var(--color);
   filter: blur(var(--blur));
 }

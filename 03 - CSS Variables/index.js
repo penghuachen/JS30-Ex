@@ -1,68 +1,40 @@
 const styleObj = {
-  space: 0,
-  blur: 0,
-  color: "#ffc600"
+  space: 10,
+  blur: 1,
+  color: "#ffc600",
+  current: null,
 };
 
-initMouseEvent();
-initChangeEvent();
-changeCssVariableBlurValue();
-changeCssVariableSpaceValue();
-changeCssVariableColorValue();
 
-function initMouseEvent() {
-  const spacing = document
-                    .querySelector('#spacing')
-                    .addEventListener('mousemove', setObjSpaceValue);
-  const blur = document
-                    .querySelector('#blur')
-                    .addEventListener('mousemove', setObjBlurValue);
+initEvents();
+function initEvents() {
+  document
+    .querySelector('.controls')
+    .addEventListener('mousemove',setObjValue);
+  document
+    .querySelector('.controls')
+    .addEventListener('change',setObjValue);
 }
 
-function initChangeEvent() {
-  const color = document
-                  .querySelector('#color')
-                  .addEventListener('change', setObjColorValue);
+function setObjValue(e) {
+  if(e.target.nodeName !== 'INPUT') return;
+  let idName = e.target.id;
+  let inputValue = e.target.value;
+  styleObj['current'] = idName;
+  styleObj[idName] = inputValue;
+  changeCssVariablesValues();
 }
 
-function setObjSpaceValue(e) {
-  let nodeName = e.target.nodeName;
-  if(nodeName !== 'INPUT') return;
-  styleObj['space'] = e.target.value;
-  changeCssVariableSpaceValue()
-}
-
-function setObjBlurValue(e) {
-  let nodeName = e.target.nodeName;
-  if(nodeName !== 'INPUT') return;
-  styleObj['blur'] = e.target.value;
-  changeCssVariableBlurValue()
-}
-
-function setObjColorValue(e) {
-  let nodeName = e.target.nodeName;
-  if(nodeName !== 'INPUT') return;
-  styleObj['color'] = e.target.value;
-  changeCssVariableColorValue();
-}
-
-function changeCssVariableSpaceValue() {
+function changeCssVariablesValues() {
+  if(styleObj.current !== 'color') {
+    document
+      .documentElement
+      .style
+      .setProperty(`--${ styleObj.current }`, `${ styleObj[styleObj.current] }px`);
+    return;
+  }
   document
     .documentElement
     .style
-    .setProperty('--spacing', `${ styleObj['space'] }px`);
-}
-
-function changeCssVariableBlurValue() {
-  document
-    .documentElement
-    .style
-    .setProperty('--blur', `${ styleObj['blur'] }px`);
-}
-
-function changeCssVariableColorValue() {
-  document
-    .documentElement
-    .style
-    .setProperty('--color', `${ styleObj['color'] }`); 
+    .setProperty(`--${ styleObj.current }`, `${ styleObj[styleObj.current] }`);    
 }
