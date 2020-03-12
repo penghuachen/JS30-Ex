@@ -74,9 +74,9 @@ console.log("Output: matchTexts", matchTexts);
 const sortNames = people
                     .slice()
                     .sort((prevName, nextName) => {
-                      let preLastName = prevName.split(',')[1];
-                      let nextLastName = nextName.split(',')[1];
-                      return preLastName - nextLastName;
+                      let [prevFirst, prevLast] = prevName.split(',');
+                      let [nextFirst, nextLast] = nextName.split(',');
+                      return prevLast - nextLast;
                     });
 console.log("Output: sortNames", sortNames);
 
