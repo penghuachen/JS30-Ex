@@ -1,9 +1,26 @@
+/*
+  踩到的雷: transition 過渡效果觸發到一半時被 renderView 重新渲染畫面而中斷
+*/
 let clockDegObj = {
   hour: 0, 
   minute: 0,
   second: 0,
 };
-setInterval(calculateTime, 1000);
+
+renderView();
+addAngle();
+
+function addAngle() {
+  const secHand = document.querySelector('.second-hand');  
+  secHand.style.transform = `rotate(${ clockDegObj.second + 6 }deg)`;
+  setTimeout(() => {
+    calculateTime();
+  }, 0);
+
+  setTimeout(() => {
+    addAngle();
+  }, 0);
+};
 
 function calculateTime() {
   const now = new Date();
@@ -15,8 +32,6 @@ function calculateTime() {
                        now.getSeconds() * 1/60 * SECONDDEGREE + 180;
   clockDegObj.hour = now.getHours() * HOURSDEGREE +
                      now.getMinutes() * 1/12 * MINUTESDEGREE - 90;
-
-  renderView();
 }
 
 function hourHandGenerator() {
@@ -39,6 +54,16 @@ function minuteHandGernerator() {
       <img src="img/minute-hand.png" alt="minute hand" >
     </div>
   `;
+}
+
+function initSecondHandAnimation() {
+  const rotate = document.querySelector('.second-hand')
+    .style.transform;
+  
+  console.log(rotate)
+  document.querySelector('.second-hand')
+    .style= `transform: rotate(${ clockDegObj.second + 30}deg)`;
+  console.log(rotate) 
 }
 
 function secondHandGernerator() {

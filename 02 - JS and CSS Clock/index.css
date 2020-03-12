@@ -74,8 +74,9 @@ body {
   transform-origin: center 0px;
   left: 144px;
   top: 149px;
-  /* transition: all 0.1s; */
-  /* transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); */
+  transform: rotate(0);
+  transition: transform 0.5s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
 
 
