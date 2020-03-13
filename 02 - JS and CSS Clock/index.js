@@ -1,28 +1,22 @@
 /*
   踩到的雷: transition 過渡效果觸發到一半時被 renderView 重新渲染畫面而中斷
 */
-let clockDegObj = {
-  hour: 0, 
-  minute: 0,
-  second: 0,
-};
-
+const accessor  = new DegreeAccessor();
 renderView();
-addAngle();
 
-function addAngle() {
-  const secHand = document.querySelector('.second-hand');  
-  secHand.style.transform = `rotate(${ clockDegObj.second + 6 }deg)`;
-  setTimeout(() => {
-    calculateTime();
-  }, 0);
+function DegreeAccessor() {
+  let clockDegObj = {
+    hour: 0, 
+    minute: 0,
+    second: 0,
+  };
+  this.getDegree = prop => clockDegObj[prop];
+  this.setTimeValue = fn => fn(clockDegObj);
+}
 
-  setTimeout(() => {
-    addAngle();
-  }, 0);
-};
 
-function calculateTime() {
+
+function degreeGenerator(clockDegObj) {
   const now = new Date();
   const SECONDDEGREE = 360 / 60;
   const MINUTESDEGREE = 360 / 60;
@@ -38,7 +32,7 @@ function hourHandGenerator() {
   return `
     <div 
       class="hand hour-hand" 
-      style="transform: rotate(${ clockDegObj.hour }deg);"
+      style="transform: rotate(${ accessor.getDegree('hour') }deg);"
       >
       <img src="img/hour-hand.png" alt="hourhand" >
     </div>
@@ -49,9 +43,20 @@ function minuteHandGernerator() {
   return `
     <div 
       class="hand minute-hand"
-      style="transform: rotate(${ clockDegObj.minute }deg)" 
+      style="transform: rotate(${ accessor.getDegree('minute') }deg)" 
       >
       <img src="img/minute-hand.png" alt="minute hand" >
+    </div>
+  `;
+}
+
+function secondHandGernerator() {
+  return `
+    <div 
+      class="hand second-hand"
+      style="transform: rotate(${ accessor.getDegree('second') }deg);" 
+      >
+      <img src="img/second-hand.png" alt="second hand" >
     </div>
   `;
 }
@@ -66,16 +71,7 @@ function initSecondHandAnimation() {
   console.log(rotate) 
 }
 
-function secondHandGernerator() {
-  return `
-    <div 
-      class="hand second-hand"
-      style="transform: rotate(${ clockDegObj.second }deg);" 
-      >
-      <img src="img/second-hand.png" alt="second hand" >
-    </div>
-  `;
-}
+
 
 function circleDotsGenerator() { 
   const DEGREE = 6;
@@ -128,6 +124,7 @@ function twentyFourTimeTrackGenerator() {
 }
 
 function renderView() {
+  accessor.setTimeValue(degreeGenerator);
   const clock = document.querySelector('.clock');
   clock.innerHTML = `
     ${ circleDotsGenerator() }
@@ -137,5 +134,13 @@ function renderView() {
     ${ minuteHandGernerator() }
     ${ secondHandGernerator() }
   `;
+
+  setTimeout(() => {
+    const secHand = document.querySelector('.second-hand');  
+    secHand.style.transform = `rotate(${ accessor.getDegree('second') + 6 }deg)`;
+    setTimeout(() => {
+      renderView();
+    },1000);
+  },0)
 }
 
