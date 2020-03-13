@@ -1,21 +1,4 @@
-# CSS Vairables
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###### tags: `JS30`
- 
-# CSS Variables #3
+# CSS Variables
 
 ## 此題重點
 
@@ -54,7 +37,6 @@
 ![](https://i.imgur.com/etroGdG.png)
 
 ### 如何使用
-
 
 #### 基本使用方式
 
@@ -164,7 +146,7 @@ div {
   color: var(--color);
 }
 ```
-```
+```htmlmixed=
 <p>I inherited blue from the root element!</p>
 <div>I got green set directly on me!</div>
 <div id='alert'>
@@ -223,7 +205,7 @@ JS 提供以下語法讓我們可以動態讀取、修改樣式的值，而這�
 
 在範例中使用於 css 變數的部分程式碼:
 
-```javacript
+```javascript=
  function handleUpdate() {
     const suffix = this.dataset.sizing || '';
     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
@@ -234,7 +216,7 @@ JS 提供以下語法讓我們可以動態讀取、修改樣式的值，而這�
 
 透過以下語法，可以選取到 `root` 元素：
 
-```javascript
+```javascript=
   var element = document.documentElement;
 ```
 
