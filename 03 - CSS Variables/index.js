@@ -19,10 +19,7 @@ function StyleObjAccessor() {
 function initEvents() {
   document
     .querySelector('.controls')
-    .addEventListener('mousemove',setObjValue);
-  document
-    .querySelector('.controls')
-    .addEventListener('change',setObjValue);
+    .addEventListener('input',setObjValue);
 }
 
 function setObjValue(e) {
