@@ -18,10 +18,6 @@
 
 ### 實作方式
 
-#### 實作思維圖像化
-
-![](https://i.imgur.com/F11j6vy.gif)
-
 #### 資料結構訂定
 
 ```javascript=
