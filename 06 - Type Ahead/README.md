@@ -241,7 +241,7 @@ var regex = /java(?!:)/g;
 var regex = /\d{3}/g;
 ```
    
-- 參考來源
+## 參考來源
 
 - [Using Fetch](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
 - [String.prototype.match()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/String/match)
