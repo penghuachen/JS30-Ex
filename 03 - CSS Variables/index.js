@@ -9,7 +9,7 @@ function StyleObjAccessor() {
     color: "#ffc600",
     current: null,
   };
-  this.setStyleValue = (name, value) => {
+  this.updateStyleValue = (name, value) => {
     styleObj['current'] = name;
     styleObj[name] = value;
   };
@@ -26,7 +26,7 @@ function setObjValue(e) {
   if(e.target.nodeName !== 'INPUT') return;
   let idName = e.target.id;
   let inputValue = e.target.value;
-  styleAccessor.setStyleValue(idName, inputValue);
+  styleAccessor.updateStyleValue(idName, inputValue);
   styleAccessor.getStyle(changeCssStyle);
 }
 
