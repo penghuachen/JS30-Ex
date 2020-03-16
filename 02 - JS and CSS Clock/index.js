@@ -11,7 +11,7 @@ function DegreeAccessor() {
     second: 0,
   };
   this.getDegree = prop => clockDegObj[prop];
-  this.setTimeValue = fn => fn(clockDegObj);
+  this.updateTimeValue = fn => fn(clockDegObj);
 }
 
 
@@ -124,7 +124,7 @@ function twentyFourTimeTrackGenerator() {
 }
 
 function renderView() {
-  accessor.setTimeValue(degreeGenerator);
+  accessor.updateTimeValue(degreeGenerator);
   const clock = document.querySelector('.clock');
   clock.innerHTML = `
     ${ circleDotsGenerator() }
