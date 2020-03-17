@@ -40,8 +40,8 @@
 
 #### 注意事項
 
-1. 如果需要 `<video>` 原生影片控制面板，則==需要提供 `controls` 屬性。==
-2. 如果需要影片有自動播放的功能，則==需要設定 `autoplay` 屬性。==
+1. 如果需要 `<video>` 原生影片控制面板，則**需要提供 `controls` 屬性。**
+2. 如果需要影片有自動播放的功能，則**需要設定 `autoplay` 屬性。**
 
 #### 客製化影片控制面板
 
@@ -71,7 +71,7 @@ video.pause();
 
 ##### `timeupdate()`
 
-==當 `currentTime` 更新時會觸發此事件==
+**當 `currentTime` 更新時會觸發此事件**
 
 
 ```javascript=
@@ -143,10 +143,10 @@ video.playbackRate = 1;
 
 1. Read-only
 2. 包含的範圍為包含元素的:
-    - ==邊框(border)==
-    - ==水平線上的內邊距(padding)==
-    - ==豎直方向滾動條(scrollbar)（如果存在的話）==
-    - ==CSS設置的寬度(width)的值。==
+    - **邊框(border)**
+    - **水平線上的內邊距(padding)**
+    - **豎直方向滾動條(scrollbar)（如果存在的話）**
+    - **CSS設置的寬度(width)的值。**
 4. 各瀏覽器的 `offsetWidth` 可能有所不同
 5. 會四捨五入為一個整數，如果需要有小數值，則需要使用 `element.getBoundingClientRect()`。
 
@@ -159,12 +159,12 @@ video.playbackRate = 1;
 #### `clientX`, `clientY`
 
 1. Read-only
-2. 提供的==座標範圍為 viewport 範圍內的座標==(不包含滾動軸)。
+2. 提供的**座標範圍為 viewport 範圍內的座標**(不包含滾動軸)。
 
 
 #### `offsetX`, `offsetY`
 
-滑鼠==點擊位置與觸發該事件元素==之間的 X 或 Y 的偏移量。
+滑鼠**點擊位置與觸發該事件元素**之間的 X 或 Y 的偏移量。
 
 ##### 支援度
 
@@ -172,12 +172,18 @@ video.playbackRate = 1;
 
 #### `pageX`, `pageY`
 
-1. 座標範圍為==整個文檔(包含滾動軸可以滾到的範圍)==
+1. 座標範圍為**整個文檔(包含滾動軸可以滾到的範圍)**
 2. Read-only，座標以 px 為單位。
 
 #### `screenX`, `screenY`
 
 座標範圍為整個裝置的尺寸大小。
+
+
+#### 圖型化示意
+
+![](https://i.imgur.com/2xKgcyo.png)
+
 
 [Demo](https://codepen.io/kids5346/pen/poJVXXL)
 
